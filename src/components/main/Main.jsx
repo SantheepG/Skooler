@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Main.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import { useSelector } from "react-redux";
@@ -12,7 +11,8 @@ import User from "./User/User";
 
 const Main = () => {
   const navigate = useNavigate();
-  const state = useSelector((state) => state);
+  const navBarstate = useSelector((state) => state.navbar);
+
   const [userData, setUserData] = useState({
     name: "",
     student_id: "",
@@ -23,15 +23,15 @@ const Main = () => {
 
   let componentToRender;
 
-  if (state.homeClicked) {
+  if (navBarstate.homeClicked) {
     componentToRender = <Home />;
-  } else if (state.productsClicked) {
+  } else if (navBarstate.productsClicked) {
     componentToRender = <Products />;
-  } else if (state.eventsClicked) {
+  } else if (navBarstate.eventsClicked) {
     componentToRender = <Events />;
-  } else if (state.cartClicked) {
+  } else if (navBarstate.cartClicked) {
     componentToRender = <Cart />;
-  } else if (state.userClicked) {
+  } else if (navBarstate.userClicked) {
     componentToRender = <User />;
   }
 

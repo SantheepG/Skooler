@@ -1,0 +1,13 @@
+.main-panel {
+    display: flex;
+  }
+  
+  .left-side {
+    flex: 0 0 auto; 
+    width: 25%; 
+  }
+  
+  .right-side {
+    flex: 1; 
+    width: 75%;
+  }

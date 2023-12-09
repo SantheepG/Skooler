@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Login.css";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster, toast } from "react-hot-toast";
 
 import { useNavigate } from "react-router-dom";
 
@@ -47,10 +46,14 @@ const Login = () => {
         },
       });
       if (response.status === 201) {
-        toast.success("Account successfully created");
+        toast.success("Account successfully created", {
+          duration: 1500,
+          position: "top-center",
+          //icon: "❌",
+        });
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 1800);
       }
       console.log(response.data);
     } catch (error) {
@@ -86,14 +89,18 @@ const Login = () => {
       }
     } catch (error) {
       console.error(error.message);
-      toast.error("Invalid mobile number or password");
+      toast.error("Invalid mobile number or password", {
+        duration: 1500,
+        position: "top-center",
+        //icon: "❌",
+      });
     }
   };
   return (
     <React.Fragment>
-      <div className="parent-container">
+      <div className="Login-parent-container">
         <div className="container">
-          <ToastContainer className="notifier" />
+          <Toaster className="notifier" />
           <div
             className={
               isSignUpActive ? "container right-panel-active" : "container"

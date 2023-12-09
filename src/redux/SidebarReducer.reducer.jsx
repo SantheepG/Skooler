@@ -1,12 +1,14 @@
-const initialNavbarState = {
-  homeClicked: true,
-  productsClicked: false,
-  eventsClicked: false,
-  cartClicked: false,
-  userClicked: false,
+const initialSidebarState = {
+  profileClicked: true,
+  ordersClicked: false,
+  paymentsClicked: false,
+  complaintsClicked: false,
+  reviewsClicked: false,
+  vouchersClicked: false,
+  notificationsClicked: false,
 };
 
-const NavReducer = (state = initialNavbarState, action) => {
+const SidebarReducer = (state = initialSidebarState, action) => {
   switch (action.type) {
     case "SET_CLICKED":
       const newFlags = Object.keys(state).reduce((acc, key) => {
@@ -24,4 +26,4 @@ const NavReducer = (state = initialNavbarState, action) => {
   }
 };
 
-export default NavReducer;
+export default SidebarReducer;

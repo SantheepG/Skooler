@@ -7,7 +7,7 @@ import { setClicked } from "../../../redux/action";
 
 const Navbar = ({ userData }) => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const navBarstate = useSelector((state) => state.navbar);
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const handleMouseEnter = () => {
@@ -36,7 +36,7 @@ const Navbar = ({ userData }) => {
   };
 
   const handleItemClick = (item) => {
-    if (!state[item]) {
+    if (!navBarstate[item]) {
       dispatch(setClicked(item, true));
     }
   };
@@ -45,11 +45,22 @@ const Navbar = ({ userData }) => {
     <React.Fragment>
       <nav className="navbar">
         <div className="left-buttons">
-          <button onClick={() => handleItemClick("homeClicked")}>Home</button>
-          <button onClick={() => handleItemClick("productsClicked")}>
+          <button
+            onClick={() => handleItemClick("homeClicked")}
+            className={navBarstate.homeClicked ? "button active" : "button"}
+          >
+            Home
+          </button>
+          <button
+            onClick={() => handleItemClick("productsClicked")}
+            className={navBarstate.productsClicked ? "button active" : "button"}
+          >
             Products
           </button>
-          <button onClick={() => handleItemClick("eventsClicked")}>
+          <button
+            onClick={() => handleItemClick("eventsClicked")}
+            className={navBarstate.eventsClicked ? "button active" : "button"}
+          >
             Events
           </button>
         </div>
@@ -58,13 +69,18 @@ const Navbar = ({ userData }) => {
           <button>Search</button>
         </div>
         <div className="right-buttons">
-          <button onClick={() => handleItemClick("cartClicked")}>Cart</button>
+          <button
+            onClick={() => handleItemClick("cartClicked")}
+            className={navBarstate.cartClicked ? "button active" : "button"}
+          >
+            Cart
+          </button>
           <div className="dropdown">
             <button
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onClick={() => handleItemClick("userClicked")}
-              className="dropbtn"
+              className={navBarstate.userClicked ? "dropbtn active" : "dropbtn"}
             >
               User
             </button>
