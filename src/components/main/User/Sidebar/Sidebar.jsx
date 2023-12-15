@@ -65,11 +65,11 @@ const Sidebar = () => {
             </a>
 
             <a
-              onClick={() => handleItemClick("notificationsClicke")}
+              onClick={() => handleItemClick("notificationsClicked")}
               className={sideBarstate.notificationsClicked ? "active" : ""}
             >
               <span></span>
-              <h3>Notification settings</h3>
+              <h3>Notifications</h3>
             </a>
           </div>
         </div>

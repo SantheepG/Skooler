@@ -1,0 +1,12 @@
+.orders-component{
+    border: solid;
+    margin: 0 50px 0 5px;
+}
+
+.delivery-status{
+    margin: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 115, 0);
+    padding: 9px;
+    border-radius: 25px;
+}

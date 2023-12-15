@@ -1,13 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-linear:linear-gradient(135deg, #3cfd7f, #02fa99, #00f6af, #00f1c1);
+    --color-primary: #6C9BCF;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(245, 224, 177, 0.4);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 1px 1px 2px 0 var(--color-light);
+}
 .main-panel {
     display: flex;
   }
   
   .left-side {
     flex: 0 0 auto; 
-    width: 25%; 
+    width: 15%; 
+    position: fixed;
+    
   }
   
   .right-side {
     flex: 1; 
     width: 75%;
+    margin-left: 230px;
   }

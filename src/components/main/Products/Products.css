@@ -1,0 +1,14 @@
+.products-content {
+    display: flex;
+    margin-top: 100px;
+  }
+  
+  .products-content .left-column {
+    width: 25%;
+    
+  }
+  
+  .products-content .right-column {
+    width: 75%;
+    
+  }

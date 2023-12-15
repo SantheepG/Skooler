@@ -1,0 +1,167 @@
+
+.calendar-container {
+    position: relative; 
+    z-index: 2;
+    width: 400px;
+    max-width: 100%;
+    background-color: #fff;
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+    padding: 0;
+    margin: -280px 0 2px 0;
+  }
+
+  .react-calendar { 
+    width: 400px;
+    max-width: 100%;
+    background-color: #fff;
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+    padding: 0;
+    margin: 0 0 2px 0;
+   } 
+  
+   .react-calendar__navigation button {
+    color: #280c82;
+    min-width: 44px;
+    background: none;
+    font-size: 16px;
+    margin-top: 8px;
+   }
+   .react-calendar__navigation button:enabled:hover,
+   .react-calendar__navigation button:enabled:focus {
+    background-color: #f8f8fa;
+   }
+   .react-calendar__navigation button[disabled] {
+    background-color: #f0f0f0;
+   }
+   abbr[title] {
+    text-decoration: none;
+   }
+   /* .react-calendar__month-view__days__day--weekend {
+    color: #d10000;
+   } */
+   .react-calendar__tile:enabled:hover,
+   .react-calendar__tile:enabled:focus {
+    background: #f8f8fa;
+    color: #6f48eb;
+    border-radius: 6px;
+   }
+   .react-calendar__tile--now {
+    background: #6f48eb33;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #6f48eb;
+   }
+   .react-calendar__tile--now:enabled:hover,
+   .react-calendar__tile--now:enabled:focus {
+    background: #6f48eb33;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #6f48eb;
+   }
+   .react-calendar__tile--hasActive:enabled:hover,
+   .react-calendar__tile--hasActive:enabled:focus {
+    background: #f8f8fa;
+   }
+   .react-calendar__tile--active {
+    background: #6f48eb;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+   }
+   .react-calendar__tile--active:enabled:hover,
+   .react-calendar__tile--active:enabled:focus {
+    background: #6f48eb;
+    color: white;
+   }
+   .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #f8f8fa;
+   }
+   .react-calendar__tile--range {
+    background: #f8f8fa;
+    color: #6f48eb;
+    border-radius: 0;
+   }
+   .react-calendar__tile--rangeStart {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background: #6f48eb;
+    color: white;
+   }
+   .react-calendar__tile--rangeEnd {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: #6f48eb;
+    color: white;
+   }
+
+   .slider-container {
+    position: relative;
+    background: #222 ;
+    height: 280px;
+    z-index: 1; 
+    margin-top: 20px;
+    visibility: none;
+    border-radius: 20px;
+  }
+
+  
+  .slider {
+    position: absolute;
+    top: 0;
+    left: -300px; /* Hides the slider initially off-screen */
+    width: 300px;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #eee ;
+    
+    transition: left 0.3s ease-in-out; /* Smooth transition for left position */
+    padding: 15px 0 0 15px;
+    /* Additional styles for the sliding component */
+  }
+  
+  .slider.active {
+    left: 0; /* Shows the slider when active class is applied */
+  }
+  
+  /* Optional styles for content inside the sliding component */
+  .slider p {
+    padding: 15px;
+    color: #222;
+  }
+
+ .calendar .event-com-scrollable{
+    height: 200px;
+    margin: 10px 0 0 0;
+    padding: 0 20px 0 0;
+ }
+
+ .event-com-scrollable .event-com-single{
+    border-radius: 10px;
+ }
+
+ .red-bar {
+  width: 5px;
+  height: 5px;
+  background-color: red;
+  position: absolute;
+  bottom: -7px;
+  left: 45%;
+  border-radius: 50%;
+}
+
+/* Style for the custom tile content */
+.custom-tile-content {
+  position: relative;
+}

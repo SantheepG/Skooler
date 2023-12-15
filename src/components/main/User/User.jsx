@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./User.css";
 import Sidebar from "./Sidebar/Sidebar";
 import { useSelector } from "react-redux";
@@ -9,13 +12,31 @@ import Complaints from "./Complaints/Complaints";
 import Reviews from "./Reviews/Reviews";
 import Notification from "./Notification/Notification";
 import Vouchers from "./Vouchers/Vouchers";
-
+import Navbar from "../Navbar/Navbar";
 const User = () => {
+  const navigate = useNavigate();
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [userData, setUserData] = useState({
+    name: "",
+    student_id: "",
+    mobile_no: "",
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    const storedUserData = JSON.parse(localStorage.getItem("user"));
+    if (storedUserData) {
+      setUserData(storedUserData);
+    } else {
+      navigate("/");
+    }
+  }, []);
   const sideBarstate = useSelector((state) => state.sidebar);
   let componentToView;
 
   if (sideBarstate.profileClicked) {
-    componentToView = <Profile />;
+    componentToView = <Profile userData={userData} />;
   } else if (sideBarstate.ordersClicked) {
     componentToView = <Orders />;
   } else if (sideBarstate.paymentsClicked) {
@@ -32,11 +53,18 @@ const User = () => {
 
   return (
     <React.Fragment>
-      <div className="main-panel">
-        <div className="left-side">
-          <Sidebar />
+      <div className="main-container">
+        <div className="navbar">
+          <Navbar />
         </div>
-        <div className="right-side">{componentToView}</div>
+        <div className="content">
+          <div className="main-panel">
+            <div className="left-side">
+              <Sidebar />
+            </div>
+            <div className="right-side">{componentToView}</div>
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );
