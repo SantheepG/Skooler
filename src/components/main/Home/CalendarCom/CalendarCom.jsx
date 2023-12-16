@@ -7,8 +7,8 @@ const CalendarCom = ({ events }) => {
   const [date, setDate] = useState(new Date());
   const [mindate, setminDate] = useState(new Date());
   const [isShowing, setIsShowing] = useState(false);
-  const [showSlider, setShowSlider] = useState(true);
-
+  const [showSlider, setShowSlider] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   //const sliderRef = useRef(null);
 
   const getOrdinalSuffix = (day) => {
@@ -49,20 +49,28 @@ const CalendarCom = ({ events }) => {
     "December",
   ];
 
-  const formattedDate = `${daysOfWeek[date.getDay()]}, ${
-    months[date.getMonth()]
-  } ${date.getDate()}${getOrdinalSuffix(
-    date.getDate()
-  )}, ${date.getFullYear()}`;
+  //const formattedDate = `${daysOfWeek[date.getDay()]}, ${
+  //  months[date.getMonth()]
+  //} ${date.getDate()}${getOrdinalSuffix(
+  //  date.getDate()
+  //)}, ${date.getFullYear()}`;
 
   const toggleSlider = (value) => {
-    if (value === date) {
-      setShowSlider(false);
-    } else {
+    if (!showSlider) {
       setDate(value);
-      setShowSlider(!showSlider);
+      setShowSlider(true);
+    } else {
+      setShowSlider(false);
     }
   };
+
+  useEffect(() => {
+    const sliderTimeout = setTimeout(() => {
+      setShowSlider(false);
+    }, 2000); // 10 seconds in milliseconds
+
+    return () => clearTimeout(sliderTimeout);
+  }, [showSlider]);
 
   const isCurrentDate = (calendarDate) => {
     const currentDate = new Date();

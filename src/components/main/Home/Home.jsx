@@ -6,6 +6,7 @@ import EventCom from "./EventCom/EventCom";
 
 const Home = () => {
   const [events, setEvents] = useState("");
+
   return (
     <React.Fragment>
       <div className="main-container">
