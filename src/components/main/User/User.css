@@ -24,6 +24,7 @@
 }
 .main-panel {
     display: flex;
+    margin: 7% 0 7% 0;
   }
   
   .left-side {

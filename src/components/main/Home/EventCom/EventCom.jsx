@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./EventCom.css";
 
-const EventCom = () => {
+const EventCom = ({ events }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -25,19 +25,22 @@ const EventCom = () => {
 
       return () => clearInterval(scrollInterval);
     }
-  }, []);
+  }, [events]);
 
   return (
     <React.Fragment>
       <div className="event-com-scrollable" ref={containerRef}>
-        <div class="event-com-single">
-          <p>event 1</p>
-        </div>
+        {events.map((event) => (
+          <div class="event-com-single">
+            <p key={event.id}>{event.event_info}</p>
+          </div>
+        ))}
+
         <div class="event-com-single">
           <p>event 2</p>
         </div>
         <div class="event-com-single">
-          <p>event 3</p>
+          <p>event 3d</p>
         </div>
       </div>
     </React.Fragment>

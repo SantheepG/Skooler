@@ -4,10 +4,12 @@ import "./CalendarCom.css";
 import "react-calendar/dist/Calendar.css";
 
 const CalendarCom = ({ events }) => {
+  const [sliderEvents, setSliderEvents] = useState([]);
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [date, setDate] = useState(new Date());
   const [mindate, setminDate] = useState(new Date());
   const [isShowing, setIsShowing] = useState(false);
-  const [showSlider, setShowSlider] = useState(false);
+  const [sliderIsHidden, setSliderIsHidden] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   //const sliderRef = useRef(null);
 
@@ -55,50 +57,89 @@ const CalendarCom = ({ events }) => {
   //  date.getDate()
   //)}, ${date.getFullYear()}`;
 
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Adding 1 because months are zero-indexed
+    const day = String(date.getDate()).padStart(2, "0");
+    const hour = String(date.getHours()).padStart(2, "0");
+    const minute = String(date.getMinutes()).padStart(2, "0");
+    const second = String(date.getSeconds()).padStart(2, "0");
+
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+  }
+
   const toggleSlider = (value) => {
-    if (!showSlider) {
-      setDate(value);
-      setShowSlider(true);
-    } else {
-      setShowSlider(false);
+    setSliderEvents([]);
+
+    let eventCount = events.length;
+    for (let i = 0; i < eventCount; i++) {
+      if (
+        events[i].event_datetime.split(" ")[0] ===
+        formatDate(value).split(" ")[0]
+      ) {
+        setSliderEvents((prevEvents) => [...prevEvents, events[i].event_info]);
+      }
+      if (
+        events[i].payment_deadline.split(" ")[0] ===
+        formatDate(value).split(" ")[0]
+      ) {
+        let deadline_info = `Payment deadline (${
+          events[i].payment_deadline.split(" ")[1]
+        }) - \n ${events[i].event_info} `;
+        setSliderEvents((prevEvents) => [...prevEvents, deadline_info]);
+      }
     }
+    setDate(value);
+    setSliderIsHidden(!sliderIsHidden);
   };
 
-  useEffect(() => {
-    const sliderTimeout = setTimeout(() => {
-      setShowSlider(false);
-    }, 2000); // 10 seconds in milliseconds
-
-    return () => clearTimeout(sliderTimeout);
-  }, [showSlider]);
-
-  const isCurrentDate = (calendarDate) => {
-    const currentDate = new Date();
-    return (
-      currentDate.getDate() === calendarDate.getDate() &&
-      currentDate.getMonth() === calendarDate.getMonth() &&
-      currentDate.getFullYear() === calendarDate.getFullYear()
-    );
-  };
-
-  const customTileContent = ({ date }) => {
-    const isCurrent = isCurrentDate(date);
-
-    if (isCurrent) {
-      return (
-        <div className="custom-tile-content">
-          <div className="red-bar"></div>
-        </div>
-      );
-    } else {
-      return null;
+  const customTileContent = ({ date, view }) => {
+    if (view === "month") {
+      let eventsCount = events.length;
+      for (let i = 0; i < eventsCount; i++) {
+        if (
+          events[i].event_datetime.split(" ")[0] ===
+            formatDate(date).split(" ")[0] ||
+          events[i].payment_deadline.split(" ")[0] ===
+            formatDate(date).split(" ")[0]
+        ) {
+          return (
+            <div className="custom-tile-content">
+              <div className="red-bar"></div>
+            </div>
+          );
+        }
+      }
     }
+    return null;
   };
+
+  //useEffect(() => {
+  //  const sliderTimeout = setTimeout(() => {
+  //    setSliderIsHidden(false);
+  //  }, 2000); // 10 seconds in milliseconds
+
+  //  return () => clearTimeout(sliderTimeout);
+  //}, [sliderIsHidden]);
+
+  //const customTileContent = ({ date }) => {
+  //  const isCurrent = isCurrentDate(date);
+
+  // if (isCurrent) {
+  //    return (
+  //      <div className="custom-tile-content">
+  //        <div className="red-bar"></div>
+  //      </div>
+  //    );
+  //  } else {
+  //   return null;
+  //  }
+  //};
 
   return (
     <div className="calendar">
       <div className="slider-container">
-        <div className={`slider ${showSlider ? "active" : ""}`}>
+        <div className={`slider ${sliderIsHidden ? "active" : ""}`}>
           <div>
             <div>
               <span>
@@ -110,21 +151,17 @@ const CalendarCom = ({ events }) => {
             <div>{daysOfWeek[date.getDay()]}</div>
           </div>
           <div className="event-com-scrollable">
-            <div class="event-com-single">
-              <p>event 1</p>
-            </div>
-            <div class="event-com-single">
-              <p>event 2</p>
-            </div>
-            <div class="event-com-single">
-              <p>event 3</p>
-            </div>
-            <div class="event-com-single">
-              <p>event 4</p>
-            </div>
-            <div class="event-com-single">
-              <p>event 5</p>
-            </div>
+            {sliderEvents.length === 0 ? (
+              <div class="event-com-single">
+                <p>No events today</p>
+              </div>
+            ) : (
+              sliderEvents.map((event) => (
+                <div class="event-com-single">
+                  <p>{event}</p>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -133,7 +170,8 @@ const CalendarCom = ({ events }) => {
           onChange={toggleSlider}
           value={date}
           minDate={mindate}
-          tileContent={({ date }) => customTileContent({ date })}
+          tileContent={({ date, view }) => customTileContent({ date, view })}
+          //tileContent={({ date }) => customTileContent({ date })}
         />
       </div>
     </div>

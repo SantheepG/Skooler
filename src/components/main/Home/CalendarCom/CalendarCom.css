@@ -15,16 +15,12 @@
   }
 
   .react-calendar { 
-    width: 400px;
-    max-width: 100%;
-    background-color: #fff;
-    color: #222;
     border-radius: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.125em;
-    padding: 0;
-    margin: 0 0 2px 0;
+    padding-bottom: 10px;
+    margin: 0 0 5px 0;
+    
    } 
   
    .react-calendar__navigation button {
@@ -120,22 +116,21 @@
   .slider {
     position: absolute;
     top: 0;
-    left: -300px; /* Hides the slider initially off-screen */
+    left: -300px; 
     width: 300px;
     height: 100%;
     border-radius: 20px;
     background-color: #eee ;
     
-    transition: left 0.3s ease-in-out; /* Smooth transition for left position */
+    transition: left 0.3s ease-in-out; 
     padding: 15px 0 0 15px;
-    /* Additional styles for the sliding component */
   }
   
   .slider.active {
-    left: 0; /* Shows the slider when active class is applied */
+    left: 0; 
   }
   
-  /* Optional styles for content inside the sliding component */
+
   .slider p {
     padding: 15px;
     color: #222;
@@ -154,14 +149,13 @@
  .red-bar {
   width: 5px;
   height: 5px;
-  background-color: red;
+  background-color: rgba(255, 13, 0, 0.804);
   position: absolute;
   bottom: -7px;
   left: 45%;
   border-radius: 50%;
 }
 
-/* Style for the custom tile content */
 .custom-tile-content {
   position: relative;
 }
