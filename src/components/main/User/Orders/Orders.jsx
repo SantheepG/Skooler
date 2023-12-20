@@ -1,5 +1,6 @@
 import React from "react";
 import "./Orders.css";
+import { BsDashSquare, BsTrash3, BsPlusSquare } from "react-icons/bs";
 const Orders = () => {
   return (
     <React.Fragment>
@@ -24,67 +25,95 @@ const Orders = () => {
               </div>
             </div>
           </div>
-          <div className="cart-item">
-            <div className="cart-item-inner">
-              <div className="cart-item-left">
-                <div className="img-wrap">
-                  <a href="">
-                    <img alt="" />
-                  </a>
+          <div className="ordered-items">
+            <div className="ordered-item">
+              <div className="item-header">
+                <div className="order-info">
+                  <div className="order-id">Order ID : </div>
+                  <div className="ordered-datetime">Placed on: </div>
                 </div>
-                <div className="cart-product-desc">
-                  <span className="order_id">Order ID : 3432434</span>
-                  <span className="cart-product-name">Men's shirt</span>
-                  <span
-                    href=""
-                    className="automation-link-from-sub-title-to-prod sku"
-                  >
-                    Size:M, Color Family:White
-                    <div>Qty:2</div>
-                    <div>Rs 1500</div>
+                <div className="order-view">
+                  <span>
+                    <a href="#" className="user-section-btn order-invoice-btn">
+                      Invoice
+                    </a>
+                  </span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="item-column image">
+                  <img alt="img" />
+                </div>
+
+                <div class="item-column description">
+                  <span>Common P</span>
+                  <span>Bball High</span>
+                  <span>White</span>
+                </div>
+
+                <div class="">
+                  <span className="delivery-status-outer">status :</span>
+                  <span className="delivery-status">Pending</span>
+                </div>
+
+                <div class="item-column product-price">
+                  <span className="currency">$</span>
+                  <span>549</span>
+                </div>
+
+                <div class="item-column end-column">
+                  <span>
+                    <BsTrash3 class="delete-btn" />
                   </span>
                 </div>
               </div>
-              <div className="cart-item-middle">
-                <div className="current-price">
-                  <span className="delivery-status">Delivered</span>
-                </div>
-              </div>
-              <div className="cart-item-right">
-                <div className="quantity automation-item-quantity">
-                  <div className="next-number-picker next-number-picker-inline cart-item-number-picker -down-disabled">
-                    <div className="next-number-picker-handler-wrap">
-                      <a className="next-number-picker-handler next-number-picker-handler-up ">
-                        <span
-                          className="next-number-picker-handler-up-inner"
-                          unselectable="unselectable"
-                        >
-                          <i className="next-icon next-icon-add next-icon-medium"></i>
-                        </span>
-                      </a>
-                      <a className="next-number-picker-handler next-number-picker-handler-up ">
-                        <span
-                          className="next-number-picker-handler-up-inner"
-                          unselectable="unselectable"
-                        >
-                          <i className="next-icon next-icon-minus next-icon-medium"></i>
-                        </span>
-                      </a>
-                    </div>
-                    <div className="next-number-picker-input-wrap">
-                      <span className="next-input next-input-single next-input-medium next-number-picker-input">
-                        <input
-                          type="text"
-                          step={1}
-                          min={1}
-                          max={5}
-                          value={1}
-                          autoComplete="off"
-                        />
-                      </span>
-                    </div>
+            </div>
+            <div className="ordered-item">
+              <div className="item-header">
+                <div className="order-info">
+                  <div className="order-id">
+                    Order ID :{" "}
+                    <span className="ordered-datetime-inner">dfsdfd</span>
+                  </div>
+                  <div className="ordered-datetime">
+                    Placed on{" "}
+                    <span className="ordered-datetime-inner">
+                      17 Sep 2023 12:53:34
+                    </span>
                   </div>
                 </div>
+                <div className="order-view">
+                  <span>
+                    <a href="#" className="user-section-btn order-invoice-btn">
+                      Invoice
+                    </a>
+                  </span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="item-column image">
+                  <img alt="img" />
+                </div>
+
+                <div class="item-column description">
+                  <span>Common P</span>
+                  <span>Bball High</span>
+                  <span>White</span>
+                </div>
+
+                <div class="">
+                  <span className="delivery-status-outer">status :</span>
+                  <span className="delivery-status">Pending</span>
+                </div>
+
+                <div class="item-column product-price">
+                  <span className="currency">$</span>
+                  <span>549</span>
+                </div>
+
+                <div class="item-column end-column"></div>
               </div>
             </div>
           </div>

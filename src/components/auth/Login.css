@@ -84,9 +84,15 @@
 .Login-parent-container input {
 	background-color: #eee;
 	border: none;
-	padding: 12px 15px;
+	border-radius: 30px;
+	padding: 12px 20px;
 	margin: 8px 0;
 	width: 100%;
+}
+
+.Login-parent-container .forget-password{
+	color: #2c0ec4;
+	text-decoration:underline;
 }
 
 .Login-parent-container .container {

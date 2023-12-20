@@ -50,7 +50,6 @@ const User = () => {
   } else if (sideBarstate.notificationsClicked) {
     componentToView = <Notification />;
   }
-
   return (
     <React.Fragment>
       <div className="main-container">

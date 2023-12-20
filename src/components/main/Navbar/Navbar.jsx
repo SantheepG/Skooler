@@ -4,11 +4,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setClicked } from "../../../redux/action";
-import { BsBell, BsCart3, BsPersonCircle } from "react-icons/bs";
+import { BsBell, BsCart3, BsPersonCircle, BsSearch } from "react-icons/bs";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navBarstate = useSelector((state) => state.navbar);
   const navigate = useNavigate();
+  const [searchBarClicked, setSearchBarClicked] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
@@ -83,29 +84,58 @@ const Navbar = () => {
               </a>
             </div>
             <div className="center-nav">
-              <div class="cl-effect-5">
+              <div>
+                <div class="cl-effect-5">
+                  <a
+                    href="#"
+                    onClick={() => handleItemClick("homeClicked")}
+                    className={navBarstate.homeClicked ? "active_nav" : "nav a"}
+                  >
+                    <span data-hover="Home">Home</span>
+                  </a>
+                  <a
+                    href="#"
+                    onClick={() => handleItemClick("productsClicked")}
+                    className={
+                      navBarstate.productsClicked ? "active_nav" : "nav a"
+                    }
+                  >
+                    <span data-hover="Products">Products</span>
+                  </a>
+                  <a
+                    href="#"
+                    onClick={() => handleItemClick("eventsClicked")}
+                    className={
+                      navBarstate.eventsClicked ? "active_nav" : "nav a"
+                    }
+                  >
+                    <span data-hover="Events">Events</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="searchbar-container">
+                <input
+                  id="searchBar"
+                  class="searchbar"
+                  type="text"
+                  placeholder="Search"
+                  onFocus={() => {
+                    setSearchBarClicked(true);
+                  }}
+                  onBlur={() => {
+                    setSearchBarClicked(false);
+                  }}
+                />
                 <a
-                  href="#"
-                  onClick={() => handleItemClick("homeClicked")}
-                  className={navBarstate.homeClicked ? "active_nav" : "nav a"}
+                  id="btnSearch"
+                  class={`btn-search ${
+                    searchBarClicked ? "visible" : "hidden"
+                  }`}
                 >
-                  <span data-hover="Home">Home</span>
-                </a>
-                <a
-                  href="#"
-                  onClick={() => handleItemClick("productsClicked")}
-                  className={
-                    navBarstate.productsClicked ? "active_nav" : "nav a"
-                  }
-                >
-                  <span data-hover="Products">Products</span>
-                </a>
-                <a
-                  href="#"
-                  onClick={() => handleItemClick("eventsClicked")}
-                  className={navBarstate.eventsClicked ? "active_nav" : "nav a"}
-                >
-                  <span data-hover="Events">Events</span>
+                  <i class="fa fa-search">
+                    <BsSearch />
+                  </i>
                 </a>
               </div>
             </div>
@@ -130,7 +160,7 @@ const Navbar = () => {
                   <span
                     data-hover="User"
                     className={
-                      navBarstate.cartClicked
+                      navBarstate.userClicked
                         ? "active_nav dropBtn"
                         : "nav a dropBtn"
                     }
@@ -144,11 +174,19 @@ const Navbar = () => {
                       </div>
                     </a>
                   </span>
-                  <div class="dropdown-content">
-                    <a href="#" onClick={() => handleItemClick("userClicked")}>
+                  <div class="dropdown-menu dropdown-content">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => handleItemClick("userClicked")}
+                    >
                       My profile
                     </a>
-                    <a href="#" onClick={handleLogout}>
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={handleLogout}
+                    >
                       Logout
                     </a>
                   </div>

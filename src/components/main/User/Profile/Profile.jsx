@@ -83,10 +83,10 @@ const Profile = ({ userData }) => {
         {isModalOpen && (
           <div className="modal" onClick={handleOutsideClick}>
             <div className="modal-content">
-              <span className="close" onClick={viewModal}>
-                &times;
-              </span>
               <div class="form-style-10">
+                <span className="close" onClick={viewModal}>
+                  &times;
+                </span>
                 <div className="profile-section section-title">
                   Update details
                 </div>
@@ -133,7 +133,9 @@ const Profile = ({ userData }) => {
                   </div>
 
                   <div class="button-section">
-                    <button onClick={UpdateProfileInfo}>Update</button>
+                    <button className="btn" onClick={UpdateProfileInfo}>
+                      Update
+                    </button>
                     <button onClick={viewModal}>Cancel</button>
                   </div>
                 </form>

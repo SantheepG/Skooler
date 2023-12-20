@@ -1,19 +1,32 @@
-/* Fix for Bootstrap 3 with Angular UI Bootstrap */
+.payment-settings-component > *{
+    opacity: 0;
+  animation: viewContent 0.2s ease-in-out forwards;
+  }
 
-.modal { 
-	display: block;
+.payment-settings-component{
+    margin: 0 50px 0 5px;
+    height: 600px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 1px 3px 0 rgba(127, 124, 124, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(160, 120, 120, 0.2);
+    border-radius: 25px;
+    padding: 30px 0;
 }
 
-/* Custom dialog/modal headers */
-
-.dialog-header-error { background-color: #d2322d; }
-.dialog-header-wait { background-color: #428bca; }
-.dialog-header-notify { background-color: #eeeeee; }
-.dialog-header-confirm { background-color: #333333; }
-	.dialog-header-error span, .dialog-header-error h4,
-	.dialog-header-wait span, .dialog-header-wait h4,
-	.dialog-header-confirm span, .dialog-header-confirm h4 { color: #ffffff; }
-
-/* Ease Display */
-
-.pad { padding: 25px; }
+.header-container{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.add-card-details{
+    text-decoration: none;
+    margin: 0 25px;
+}
+.add-card-btn{
+    text-decoration: none;
+}
+.add-card-btn:hover{
+    color: aliceblue;
+}

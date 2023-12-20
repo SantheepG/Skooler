@@ -3,10 +3,12 @@ aside{
     height: 100vh;
     width: 30vh;
     padding: 0 5px 0 15px;
+    font-family:var(--font-default);
+    font-size: 14px;
     
 }
 aside .title{
-    font-size: 1.8rem;
+    
     background-clip: text;
     -webkit-background-clip: text; 
     color: transparent;
@@ -65,11 +67,11 @@ aside .sidebar a{
     margin-left: 0.5rem;
     transition: all 0.3s ease;
     font-weight: 100;
-    font-size: 15px;
+    
 }
 
 aside .sidebar a span{
-    font-size: 1.6rem;
+    
     transition: all 0.3s ease;
 }
 

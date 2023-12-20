@@ -18,7 +18,11 @@ body {
   backdrop-filter: blur(10px);
   padding: 10px;
   z-index: 999;
-  box-shadow: 0 0 5px #0000001c;
+  box-shadow: 0px 0 1px rgba(255, 183, 0, 0.5), 
+              0px 0 1px rgba(255, 221, 0, 0.5), 
+              0px 1px 1px rgba(255, 162, 0, 0.5), 
+              0px 1px 1px rgba(255, 153, 0, 0.5);
+
   transition: all 0.3s;
   margin: 5px 10px 0 0 ;
 }
@@ -34,12 +38,19 @@ body {
   padding: 5px 10px;
 }
 
+.left-nav{
+  left: 0;
+}
 .center-nav {
+  left: 50%;
   flex-grow: 1;
   text-align: center;
+  display: flex;
+  margin: 0 0 0 20%;
 }  
 
 .right-nav{
+  left: 100%;
   margin-right: 60px;
 }
 
@@ -143,6 +154,8 @@ body {
   display: flex;
   
 }
+
+
 
 .navbar__logo img {
   width: 50px;
@@ -257,10 +270,15 @@ nav a:focus {
   cursor: pointer;
 }
 
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
+  transition: all 200ms linear;
+  
+  
+
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -272,6 +290,10 @@ nav a:focus {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   right: 0;
+  transition: all 0.3s ease-in-out;  
+  border-bottom: solid 3px #e27e03b4;
+  border-radius: 10px;
+
 }
 
 /* Links inside the dropdown */
@@ -281,14 +303,25 @@ nav a:focus {
   text-decoration: none;
   display: block;
   text-transform: capitalize;
+  padding: 10px 2px;
+  border-radius: 2px;
 }
 
+.dropdown-item:hover, 
+.dropdown-item:focus {
+	color: #e27e03b4;
+	background-color: rgb(255, 255, 255);
+  border-bottom: solid 2px #e27e03b4;
+  transition: all 0.3s ease-in-out;  
+ 
+}
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+  animation: slideInFromTop 0.3s ease forwards;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
@@ -297,10 +330,123 @@ nav a:focus {
 }
 
 
+.searchbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+.searchbar {
+    float: right;
+    background-color: rgb(243, 242, 242);
+    color: rgb(46, 38, 38);
+    padding: 6px 10px;
+    width: 150px;
+    border: none;
+    margin-top: 1px;
+    margin-right: 8px;
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    border-left: rgb(228, 223, 223) solid 1px;
+    border-right: rgb(228, 223, 223) solid 1px;
+    transition: 0.3s;
+    border-radius: 25px;
+}
 
+.searchbar::placeholder {
+    color: rgb(139, 135, 135);
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    /* transition: 0.2s; */
+}
 
+.searchbar:focus {
+    width: 300px;
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 0.3s;
+    /* Stops the input box from inheriting the styling from the inputs on the request form */
+    border: #e27e03b4 solid 1px;
+    outline: none;
+    overflow-x: auto;
+}
 
+.btn-search {
+    
+    cursor: pointer;
+    color: white;
+    text-decoration: none !important;
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1.5em;
+    padding-top: 5px;
+    margin-right: 40px;
+    animation: slideInFromLeft 2s ease forwards; /* Adjust timing and easing as needed */
+}
+
+.btn-search i:hover{
+  color: rgb(253, 171, 63);
+  
+}
+
+.visible {
+  visibility: visible;
+  animation: slideInFromLeft 0.7s ease forwards;
+  /* Add other styles if needed */
+}
+
+.hidden {
+  visibility: hidden;
+  animation: slideOutFromLeft 0.5s ease forwards;
+  /* Add other styles if needed */
+}
+
+@keyframes slideInFromLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-100%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes slideOutFromLeft {
+  0% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+  100% {
+      opacity: 0;
+      transform: translateX(-100%);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+      opacity: 0;
+      transform: translateY(-10%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromdown {
+  0% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(100%);
+  }
+}
 
   /*
 .navbar .dropdown {

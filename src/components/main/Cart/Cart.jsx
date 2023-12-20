@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cart.css";
 import Navbar from "../Navbar/Navbar";
-import img1 from "../../../assets/sample-product.jpeg";
+import { BsDashSquare, BsTrash3, BsPlusSquare } from "react-icons/bs";
 const Cart = () => {
   return (
     <React.Fragment>
@@ -13,7 +13,7 @@ const Cart = () => {
           {" "}
           <div className="cart-content">
             <div className="left-column">
-              <div className="container">
+              <div className="cart-container">
                 <div className="list-header">
                   <div className="list-header-container">
                     <div className="list-header-main">
@@ -39,75 +39,87 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                <div className="cart-item">
-                  <div className="cart-item-inner">
-                    <div className="cart-item-left">
-                      <div className="img-wrap">
-                        <a href="">
-                          <img src={img1} alt="" />
-                        </a>
-                      </div>
-                      <div className="cart-product-desc">
-                        <a href="" className="cart-product-name">
-                          next-input next-input-single next-input-medium
-                          next-number-picker-input
-                        </a>
-                        <a
-                          href=""
-                          className="automation-link-from-sub-title-to-prod sku"
-                        >
-                          Sunco, Color Family:White
-                        </a>
-                      </div>
+                <div class="shopping-cart">
+                  <div class="item">
+                    <div class="item-column image">
+                      <img alt="img" />
                     </div>
-                    <div className="cart-item-middle">
-                      <div className="current-price">
-                        <span className="currency">Rs </span>
-                        <span className="price-int">1500</span>
-                      </div>
-                      <div className="origin-price">Rs 4443</div>
-                      <div className="promotion-ratio"></div>
+
+                    <div class="item-column description">
+                      <span>Common P</span>
+                      <span>Bball High</span>
+                      <span>White</span>
                     </div>
-                    <div className="cart-item-right">
-                      <div className="quantity automation-item-quantity">
-                        <div className="next-number-picker next-number-picker-inline cart-item-number-picker -down-disabled">
-                          <div className="next-number-picker-handler-wrap">
-                            <a className="next-number-picker-handler next-number-picker-handler-up ">
-                              <span
-                                className="next-number-picker-handler-up-inner"
-                                unselectable="unselectable"
-                              >
-                                <i className="next-icon next-icon-add next-icon-medium"></i>
-                              </span>
-                            </a>
-                            <a className="next-number-picker-handler next-number-picker-handler-up ">
-                              <span
-                                className="next-number-picker-handler-up-inner"
-                                unselectable="unselectable"
-                              >
-                                <i className="next-icon next-icon-minus next-icon-medium"></i>
-                              </span>
-                            </a>
-                          </div>
-                          <div className="next-number-picker-input-wrap">
-                            <span className="next-input next-input-single next-input-medium next-number-picker-input">
-                              <input
-                                type="text"
-                                step={1}
-                                min={1}
-                                max={5}
-                                value={1}
-                                autoComplete="off"
-                              />
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+
+                    <div class="item-column quantity">
+                      <span>
+                        <a href="#" className="decrease-btn">
+                          <BsDashSquare className="decrease-btn" />
+                        </a>
+                      </span>
+                      <span>
+                        <input type="text" name="name" value="1" />
+                      </span>
+                      <span>
+                        <a href="#" className="increase-btn">
+                          <BsPlusSquare className="increase-btn" />
+                        </a>
+                      </span>
+                    </div>
+
+                    <div class="item-column product-price">
+                      <span className="currency">$</span>
+                      <span>549</span>
+                    </div>
+
+                    <div class="item-column end-column">
+                      <span>
+                        <BsTrash3 class="delete-btn" />
+                      </span>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="item-column image">
+                      <img alt="img" />
+                    </div>
+
+                    <div class="item-column description">
+                      <span>Common P</span>
+                      <span>Bball High</span>
+                      <span>White</span>
+                    </div>
+
+                    <div class="item-column quantity">
+                      <span>
+                        <a href="#" className="decrease-btn">
+                          <BsDashSquare className="decrease-btn" />
+                        </a>
+                      </span>
+                      <span>
+                        <input type="text" name="name" value="1" />
+                      </span>
+                      <span>
+                        <a href="#" className="increase-btn">
+                          <BsPlusSquare className="increase-btn" />
+                        </a>
+                      </span>
+                    </div>
+
+                    <div class="item-column product-price">
+                      <span className="currency">$</span>
+                      <span>549</span>
+                    </div>
+
+                    <div class="item-column end-column">
+                      <span>
+                        <BsTrash3 class="delete-btn" />
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="right-column">
               <div className="summary-section">
                 <div className="summary-section-heading">Order summary</div>

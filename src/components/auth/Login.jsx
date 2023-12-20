@@ -173,7 +173,9 @@ const Login = () => {
                     setFormData({ ...formData, password: e.target.value })
                   }
                 />
-                <a href="#">Forgot your password?</a>
+                <a className="forget-password" href="#">
+                  Forgot your password?
+                </a>
                 <button onClick={handleLogin}>Login</button>
               </div>
             </div>
